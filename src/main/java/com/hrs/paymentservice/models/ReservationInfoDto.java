@@ -9,8 +9,17 @@ import javax.validation.constraints.NotNull;
 import com.hrs.paymentservice.gateway.PaymentProviderType;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class ReservationInfo {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ReservationInfoDto {
+	
+	@ApiModelProperty(notes = "Unique identifier of the Reservation Info.", example = "1")
+	private Long id;
 
 	@ApiModelProperty(notes = "Type of room.", example = "DELUXE_ROOM", required = true)
 	@Enumerated(EnumType.STRING)
