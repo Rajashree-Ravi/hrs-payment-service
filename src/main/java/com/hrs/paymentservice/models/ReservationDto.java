@@ -25,9 +25,11 @@ public class ReservationDto {
 	@NotNull(message = "Invalid customerId: CustomerId may not be null.")
 	private Long customerId;
 
-	@ApiModelProperty(notes = "Unique identifier of the Hotel Room.", example = "1", required = true)
-	@NotNull(message = "Invalid hotelId: HotelId may not be null.")
+	@ApiModelProperty(notes = "Unique identifier of the Hotel Room.")
 	private Long hotelId;
+
+	@ApiModelProperty(notes = "Unique identifier of the Payment.")
+	private Long paymentId;
 
 	@ApiModelProperty(notes = "Start Date of reservation.", example = "23/11/2023", required = true)
 	@NotNull(message = "Invalid startDate: Start Date may not be null.")
@@ -42,8 +44,8 @@ public class ReservationDto {
 	@NotNull(message = "Invalid status: Reservation status may not be null.")
 	private ReservationStatus status;
 
-	@ApiModelProperty(notes = "Unique identifier of the Payment.", example = "1", required = true)
-	@NotNull(message = "Invalid paymentReference: Payment reference may not be null.")
-	private Long paymentReference;
+	@ApiModelProperty(notes = "Details for the reservation.", required = true)
+	@NotNull(message = "Invalid reservationInfo: Reservation details may not be null.")
+	private ReservationInfo reservationInfo;
 
 }

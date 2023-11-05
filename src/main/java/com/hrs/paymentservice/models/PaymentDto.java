@@ -26,6 +26,10 @@ public class PaymentDto {
 	@ApiModelProperty(notes = "Unique identifier of the Customer.", example = "1", required = true)
 	@NotNull(message = "Invalid customerId: CustomerId may not be null.")
 	private Long customerId;
+	
+	@ApiModelProperty(notes = "Unique identifier of the Reservation.", example = "1", required = true)
+	@NotNull(message = "Invalid reservationId: ReservationId may not be null.")
+	private Long reservationId;
 
 	@ApiModelProperty(notes = "Amount to be paid.", example = "1000.00", required = true)
 	@NotNull(message = "Invalid amount: Payment amount may not be null.")

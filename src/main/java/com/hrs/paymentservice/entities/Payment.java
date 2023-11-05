@@ -34,6 +34,9 @@ public class Payment {
 	@NotNull(message = "Invalid customerId: CustomerId may not be null.")
 	private Long customerId;
 
+	@NotNull(message = "Invalid reservationId: ReservationId may not be null.")
+	private Long reservationId;
+
 	@NotNull(message = "Invalid amount: Payment amount may not be null.")
 	private BigDecimal amount;
 
@@ -46,7 +49,8 @@ public class Payment {
 	private PaymentStatus status;
 
 	public Payment updateWith(Payment payment) {
-		return new Payment(this.id, payment.customerId, payment.amount, payment.provider, payment.status);
+		return new Payment(this.id, payment.customerId, payment.reservationId, payment.amount, payment.provider,
+				payment.status);
 	}
 
 }
