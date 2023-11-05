@@ -53,6 +53,7 @@ public class PaymentServiceImpl implements PaymentService {
 			break;
 		}
 
+		paymentRepository.save(mapper.map(paymentDto, Payment.class));
 		return paymentDto;
 	}
 

@@ -50,12 +50,22 @@ public class PaymentController {
 
 	@PostMapping("/pay")
 	public ResponseEntity<PaymentDto> processPayment(@RequestBody @Valid PaymentDto payment) {
-		return ResponseEntity.ok(paymentService.processTransaction(payment));
+		PaymentDto processedPayment = paymentService.processTransaction(payment);
+
+		log.info("Payment done successfully hence publishing the payment event.");
+		topicProducer.sendPayment(processedPayment);
+
+		return new ResponseEntity<>(processedPayment, HttpStatus.CREATED);
 	}
 
 	@PostMapping("/refund")
 	public ResponseEntity<PaymentDto> processRefund(@RequestBody @Valid PaymentDto payment) {
-		return ResponseEntity.ok(paymentService.processTransaction(payment));
+		PaymentDto processedPayment = paymentService.processTransaction(payment);
+
+		log.info("Refund done successfully hence publishing the refund event.");
+		topicProducer.sendRefund(processedPayment);
+
+		return new ResponseEntity<>(processedPayment, HttpStatus.OK);
 	}
 
 	@GetMapping("/retrieve/{id}")
